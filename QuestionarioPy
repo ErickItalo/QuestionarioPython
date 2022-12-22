@@ -1,0 +1,99 @@
+Perguntas = [
+    {
+        "Pergunta": "Quanto é 5+7?",
+        "Opcoes": ["0", "8", "28", "12"],
+        "Resposta": "12",
+    },
+    {
+        "Pergunta": "Quanto é 5-10?",
+        "Opcoes": ["2", "0", "-5", "15"],
+        "Resposta": "-5",
+    },
+    {
+        "Pergunta": "Quanto é 5*7?",
+        "Opcoes": ["35", "30", "-25", "12"],
+        "Resposta": "35",
+    },
+    {
+        "Pergunta": "Quanto é -6*12?",
+        "Opcoes": ["-60", "72", "-72", "66"],
+        "Resposta": "-72",
+    },
+    {
+        "Pergunta": "Quanto é 50/5?",
+        "Opcoes": ["5", "-5", "25", "10"],
+        "Resposta": "10",
+    },
+    {
+        "Pergunta": "Quanto é 99/3?",
+        "Opcoes": ["31", "23", "33", "46"],
+        "Resposta": "33",
+    },
+    {
+        "Pergunta": "Qual é a Raiz Quadrada de 25?",
+        "Opcoes": ["25", "5", "15", "10"],
+        "Resposta": "5",
+    },
+    {
+        "Pergunta": "Qual é a Raiz Quadrada de 36?",
+        "Opcoes": ["6", "12", "-12", "18"],
+        "Resposta": "6",
+    },
+    {
+        "Pergunta": "Quanto é 8^2?",
+        "Opcoes": ["16", "38", "64", "36"],
+        "Resposta": "64",
+    },
+    {
+        "Pergunta": "Quanto é 4^3?",
+        "Opcoes": ["12", "16", "64", "34"],
+        "Resposta": "64",
+    },
+]
+
+qntd_acertos = 0
+
+for i, pergunta in enumerate(Perguntas):
+    print(f"Pergunta {i+1}:", pergunta["Pergunta"])
+    print()
+
+    Opcoes = pergunta["Opcoes"]
+
+    for i, Opcao in enumerate(Opcoes):
+        print(f"{i})", Opcao)
+    
+    print()
+
+    escolha = input("Escolha uma Opção: ")
+
+    acertou = False
+    escolha_int = None
+    qntd_opcoes = len(Opcoes)
+
+    if escolha.isdigit():
+        escolha_int = int(escolha)
+
+    if escolha_int is not None:
+        if escolha_int >= 0 and escolha_int < qntd_opcoes:
+            if Opcoes[escolha_int] == pergunta["Resposta"]:
+                acertou = True
+
+    print()
+    if acertou:
+        qntd_acertos += 1
+        print("VOCê ACERTOU!")
+        print()
+    else:
+        print("VOCê ERROU!")
+        print()
+        
+print("Você acertou", qntd_acertos)
+print("de", len(Perguntas), "perguntas.")
+print()
+
+if qntd_acertos < 5:
+    print("Reprovado.")
+elif qntd_acertos >= 5 and qntd_acertos < 7:
+    print("Recuperação.")
+else:
+    print("Aprovado.")
